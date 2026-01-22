@@ -1,0 +1,1147 @@
+/*
+    =====================================================
+    PET SHOP LIZ - Estilos CSS
+    =====================================================
+    Arquivo: styles.css
+    Descrição: Arquivo de estilos CSS para a landing page
+    do Pet Shop Liz. Contém todos os estilos visuais
+    incluindo cores, tipografia, layout e responsividade.
+    
+    Autor: Desenvolvedor Web
+    Data: Janeiro 2026
+    
+    Índice:
+    1. Variáveis CSS (Custom Properties)
+    2. Reset e Estilos Globais
+    3. Header e Navegação
+    4. Seção Home (Hero)
+    5. Seção Serviços
+    6. Seção Sobre
+    7. Seção Contato
+    8. Footer
+    9. Componentes Reutilizáveis
+    10. Animações
+    11. Media Queries (Responsividade)
+    =====================================================
+*/
+
+/* 
+    =====================================================
+    1. VARIÁVEIS CSS (Custom Properties)
+    =====================================================
+    Define as cores, fontes e valores reutilizáveis
+    do projeto para manter consistência visual
+*/
+:root {
+    /* Cores principais baseadas no logo Pet Shop Liz */
+    --color-primary: #1a5f2a;        /* Verde escuro - cor principal */
+    --color-primary-light: #2e8b3e;  /* Verde claro */
+    --color-secondary: #f7d000;       /* Amarelo - destaque */
+    --color-accent: #e63946;          /* Vermelho - acentos */
+    --color-blue: #1e88e5;           /* Azul - complementar */
+    
+    /* Cores neutras */
+    --color-white: #ffffff;           /* Branco puro */
+    --color-light: #f8f9fa;           /* Cinza muito claro - fundos */
+    --color-gray: #6c757d;            /* Cinza médio - textos secundários */
+    --color-dark: #212529;            /* Quase preto - textos principais */
+    
+    /* Fontes */
+    --font-primary: 'Fredoka', sans-serif;   /* Fonte para títulos (divertida) */
+    --font-secondary: 'Poppins', sans-serif; /* Fonte para textos (legível) */
+    
+    /* Sombras */
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);   /* Sombra pequena */
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.15);  /* Sombra média */
+    --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.2); /* Sombra grande */
+    
+    /* Bordas arredondadas */
+    --radius-sm: 8px;    /* Borda pequena */
+    --radius-md: 16px;   /* Borda média */
+    --radius-lg: 24px;   /* Borda grande */
+    --radius-full: 50%;  /* Círculo completo */
+    
+    /* Transições */
+    --transition: all 0.3s ease; /* Transição padrão suave */
+}
+
+/* 
+    =====================================================
+    2. RESET E ESTILOS GLOBAIS
+    =====================================================
+    Remove estilos padrão do navegador e define
+    configurações base para todo o documento
+*/
+
+/* Reset universal - remove margens e paddings padrão */
+* {
+    margin: 0;           /* Remove margem de todos elementos */
+    padding: 0;          /* Remove padding de todos elementos */
+    box-sizing: border-box; /* Inclui padding e border no cálculo de largura */
+}
+
+/* Scroll suave para links âncora */
+html {
+    scroll-behavior: smooth; /* Animação suave ao clicar em links de navegação */
+}
+
+/* Configurações base do body */
+body {
+    font-family: var(--font-secondary);  /* Fonte padrão para textos */
+    font-size: 16px;                      /* Tamanho base de fonte */
+    line-height: 1.6;                     /* Altura da linha para legibilidade */
+    color: var(--color-dark);             /* Cor padrão do texto */
+    background-color: var(--color-white); /* Cor de fundo padrão */
+    overflow-x: hidden;                   /* Previne scroll horizontal */
+}
+
+/* Remove estilos padrão de listas */
+ul {
+    list-style: none; /* Remove bullets das listas */
+}
+
+/* Estilo base para links */
+a {
+    text-decoration: none; /* Remove sublinhado */
+    color: inherit;        /* Herda cor do elemento pai */
+}
+
+/* Garante que imagens sejam responsivas */
+img {
+    max-width: 100%;  /* Nunca ultrapassa container */
+    height: auto;     /* Mantém proporção */
+    display: block;   /* Remove espaço extra abaixo */
+}
+
+/* 
+    =====================================================
+    3. HEADER E NAVEGAÇÃO
+    =====================================================
+    Estilos para o cabeçalho fixo e menu de navegação
+*/
+
+/* Container do header */
+header {
+    position: fixed;              /* Fixa no topo durante scroll */
+    top: 0;                       /* Alinha ao topo */
+    left: 0;                      /* Alinha à esquerda */
+    width: 100%;                  /* Largura total */
+    z-index: 1000;                /* Fica acima de outros elementos */
+    background: var(--color-white); /* Fundo branco */
+    box-shadow: var(--shadow-sm); /* Sombra sutil */
+}
+
+/* Barra de navegação principal */
+#navbar {
+    display: flex;              /* Layout flexbox */
+    justify-content: space-between; /* Espaço entre elementos */
+    align-items: center;        /* Centraliza verticalmente */
+    padding: 15px 5%;           /* Espaçamento interno */
+    max-width: 1400px;          /* Largura máxima */
+    margin: 0 auto;             /* Centraliza horizontalmente */
+}
+
+/* Estilo do logo na navegação */
+.nav-logo {
+    display: flex;        /* Flexbox para alinhar ícone e texto */
+    align-items: center;  /* Centraliza verticalmente */
+    gap: 10px;            /* Espaço entre ícone e texto */
+    font-family: var(--font-primary); /* Fonte divertida */
+    font-size: 1.5rem;    /* Tamanho do texto */
+    font-weight: 700;     /* Negrito */
+    color: var(--color-primary); /* Cor verde principal */
+    transition: var(--transition); /* Transição suave */
+}
+
+/* Ícone de pata no logo */
+#nav_logo {
+    font-size: 1.8rem;               /* Tamanho do ícone */
+    color: var(--color-secondary);   /* Cor amarela */
+}
+
+/* Efeito hover no logo */
+.nav-logo:hover {
+    transform: scale(1.05); /* Aumenta levemente */
+}
+
+/* Lista de navegação desktop */
+#nav_list {
+    display: flex; /* Layout horizontal */
+    gap: 30px;     /* Espaço entre itens */
+}
+
+/* Itens da navegação */
+.nav-item a {
+    font-size: 1rem;          /* Tamanho do texto */
+    font-weight: 500;         /* Peso médio */
+    color: var(--color-dark); /* Cor escura */
+    padding: 8px 12px;        /* Espaçamento interno */
+    border-radius: var(--radius-sm); /* Bordas arredondadas */
+    transition: var(--transition);   /* Transição suave */
+    position: relative;       /* Para pseudo-elemento */
+}
+
+/* Linha decorativa abaixo do item ativo/hover */
+.nav-item a::after {
+    content: '';              /* Pseudo-elemento vazio */
+    position: absolute;       /* Posicionamento absoluto */
+    bottom: 0;                /* Alinha ao fundo */
+    left: 50%;                /* Começa no centro */
+    width: 0;                 /* Largura inicial 0 */
+    height: 3px;              /* Altura da linha */
+    background: var(--color-secondary); /* Cor amarela */
+    transform: translateX(-50%); /* Centraliza */
+    transition: var(--transition); /* Animação suave */
+    border-radius: 2px;       /* Bordas arredondadas */
+}
+
+/* Expande linha no hover e no item ativo */
+.nav-item a:hover::after,
+.nav-item.active a::after {
+    width: 100%; /* Expande para largura total */
+}
+
+/* Muda cor no hover */
+.nav-item a:hover {
+    color: var(--color-primary); /* Cor verde */
+}
+
+/* Item ativo tem cor verde */
+.nav-item.active a {
+    color: var(--color-primary);
+}
+
+/* Botão padrão reutilizável */
+.btn-default {
+    display: inline-flex;     /* Flexbox inline */
+    align-items: center;      /* Centraliza verticalmente */
+    gap: 8px;                 /* Espaço entre ícone e texto */
+    padding: 12px 24px;       /* Espaçamento interno */
+    font-family: var(--font-secondary); /* Fonte do projeto */
+    font-size: 0.95rem;       /* Tamanho do texto */
+    font-weight: 600;         /* Semi-negrito */
+    color: var(--color-white); /* Texto branco */
+    background: var(--color-primary); /* Fundo verde */
+    border: none;             /* Remove borda */
+    border-radius: var(--radius-md); /* Bordas arredondadas */
+    cursor: pointer;          /* Cursor de mão */
+    transition: var(--transition); /* Transição suave */
+    text-decoration: none;    /* Remove sublinhado */
+}
+
+/* Efeito hover nos botões */
+.btn-default:hover {
+    background: var(--color-primary-light); /* Verde mais claro */
+    transform: translateY(-2px); /* Sobe levemente */
+    box-shadow: var(--shadow-md); /* Adiciona sombra */
+}
+
+/* Estilo específico do botão WhatsApp */
+.btn-whatsapp {
+    background: #25d366; /* Verde do WhatsApp */
+}
+
+.btn-whatsapp:hover {
+    background: #128c7e; /* Verde escuro do WhatsApp */
+}
+
+/* Botão mobile (hambúrguer) - escondido em desktop */
+#mobile_btn {
+    display: none;            /* Escondido por padrão */
+    background: transparent;  /* Fundo transparente */
+    border: none;             /* Remove borda */
+    font-size: 1.5rem;        /* Tamanho do ícone */
+    color: var(--color-primary); /* Cor verde */
+    cursor: pointer;          /* Cursor de mão */
+}
+
+/* Menu mobile - escondido por padrão */
+#mobile_menu {
+    display: none;            /* Escondido */
+    position: absolute;       /* Posição absoluta */
+    top: 100%;                /* Abaixo do header */
+    left: 0;                  /* Alinhado à esquerda */
+    width: 100%;              /* Largura total */
+    background: var(--color-white); /* Fundo branco */
+    padding: 20px;            /* Espaçamento interno */
+    box-shadow: var(--shadow-md); /* Sombra */
+    flex-direction: column;   /* Layout vertical */
+    gap: 20px;                /* Espaço entre itens */
+}
+
+/* Lista de navegação mobile */
+#mobile_nav_list {
+    display: flex;            /* Layout flexbox */
+    flex-direction: column;   /* Empilha verticalmente */
+    gap: 15px;                /* Espaço entre itens */
+}
+
+/* Itens do menu mobile */
+#mobile_nav_list .nav-item a {
+    display: block;           /* Bloco completo clicável */
+    padding: 12px 16px;       /* Espaçamento maior */
+    font-size: 1.1rem;        /* Texto maior */
+}
+
+/* Menu mobile quando ativo */
+#mobile_menu.active {
+    display: flex; /* Mostra o menu */
+}
+
+/* 
+    =====================================================
+    4. SEÇÃO HOME (HERO)
+    =====================================================
+    Seção principal com banner e chamada para ação
+*/
+
+/* Container da seção home */
+#home {
+    display: flex;              /* Layout flexbox */
+    align-items: center;        /* Centraliza verticalmente */
+    justify-content: space-between; /* Espaço entre elementos */
+    min-height: 100vh;          /* Altura mínima da viewport */
+    padding: 120px 5% 60px;     /* Padding (topo maior por causa do header fixo) */
+    background: linear-gradient(135deg, #e8f5e9 0%, #fff9c4 100%); /* Gradiente verde/amarelo suave */
+    position: relative;         /* Para elementos posicionados */
+    overflow: hidden;           /* Esconde overflow */
+}
+
+/* Forma decorativa de fundo */
+.shape {
+    position: absolute;         /* Posição absoluta */
+    top: -100px;                /* Posicionamento */
+    right: -100px;
+    width: 400px;               /* Tamanho */
+    height: 400px;
+    background: var(--color-secondary); /* Amarelo */
+    border-radius: var(--radius-full); /* Círculo */
+    opacity: 0.1;               /* Semi-transparente */
+    z-index: 0;                 /* Atrás do conteúdo */
+}
+
+/* Container do Call to Action */
+#cta {
+    max-width: 550px;           /* Largura máxima */
+    z-index: 1;                 /* Acima da forma decorativa */
+}
+
+/* Título principal */
+.title {
+    font-family: var(--font-primary); /* Fonte divertida */
+    font-size: 3rem;            /* Tamanho grande */
+    font-weight: 700;           /* Negrito */
+    color: var(--color-dark);   /* Cor escura */
+    line-height: 1.2;           /* Altura da linha compacta */
+    margin-bottom: 20px;        /* Margem inferior */
+}
+
+/* Destaque no título (palavra "Pet") */
+.title span {
+    color: var(--color-primary); /* Cor verde */
+    position: relative;         /* Para decoração */
+}
+
+/* Sublinhado decorativo no span */
+.title span::after {
+    content: '';                /* Pseudo-elemento */
+    position: absolute;         /* Posição absoluta */
+    bottom: 5px;                /* Próximo ao texto */
+    left: 0;
+    width: 100%;
+    height: 8px;                /* Altura da linha */
+    background: var(--color-secondary); /* Amarelo */
+    z-index: -1;                /* Atrás do texto */
+    opacity: 0.5;               /* Semi-transparente */
+}
+
+/* Descrição abaixo do título */
+.description {
+    font-size: 1.1rem;          /* Tamanho do texto */
+    color: var(--color-gray);   /* Cinza */
+    margin-bottom: 30px;        /* Margem inferior */
+    line-height: 1.8;           /* Boa legibilidade */
+}
+
+/* Container dos botões de CTA */
+#cta_buttons {
+    display: flex;              /* Layout flexbox */
+    align-items: center;        /* Alinha verticalmente */
+    gap: 20px;                  /* Espaço entre botões */
+    margin-bottom: 30px;        /* Margem inferior */
+    flex-wrap: wrap;            /* Quebra em telas pequenas */
+}
+
+/* Estilo do botão/link de telefone */
+#phone_button {
+    display: flex;              /* Flexbox */
+    align-items: center;        /* Centraliza */
+    gap: 10px;                  /* Espaço entre elementos */
+    font-weight: 600;           /* Semi-negrito */
+    color: var(--color-dark);   /* Cor escura */
+    transition: var(--transition); /* Transição suave */
+}
+
+/* Botão circular do telefone */
+#phone_button button {
+    width: 48px;                /* Largura fixa */
+    height: 48px;               /* Altura fixa */
+    padding: 0;                 /* Remove padding */
+    border-radius: var(--radius-full); /* Circular */
+    display: flex;              /* Flexbox */
+    align-items: center;        /* Centraliza */
+    justify-content: center;    /* Centraliza */
+}
+
+/* Hover no botão de telefone */
+#phone_button:hover {
+    color: var(--color-primary); /* Muda cor do texto */
+}
+
+/* Container dos botões de redes sociais */
+.social-media-buttons {
+    display: flex;              /* Layout horizontal */
+    gap: 15px;                  /* Espaço entre ícones */
+}
+
+/* Ícones de redes sociais */
+.social-media-buttons a {
+    display: flex;              /* Flexbox */
+    align-items: center;        /* Centraliza */
+    justify-content: center;    /* Centraliza */
+    width: 48px;                /* Largura fixa */
+    height: 48px;               /* Altura fixa */
+    background: var(--color-white); /* Fundo branco */
+    border-radius: var(--radius-full); /* Circular */
+    font-size: 1.4rem;          /* Tamanho do ícone */
+    color: var(--color-primary); /* Cor verde */
+    box-shadow: var(--shadow-sm); /* Sombra sutil */
+    transition: var(--transition); /* Transição suave */
+}
+
+/* Cores específicas para cada rede social no hover */
+.social-media-buttons a:hover {
+    transform: translateY(-3px); /* Sobe */
+    box-shadow: var(--shadow-md); /* Sombra maior */
+}
+
+/* WhatsApp */
+.social-media-buttons a:nth-child(1):hover {
+    background: #25d366;        /* Verde WhatsApp */
+    color: var(--color-white);  /* Ícone branco */
+}
+
+/* Instagram */
+.social-media-buttons a:nth-child(2):hover {
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    color: var(--color-white);
+}
+
+/* Facebook */
+.social-media-buttons a:nth-child(3):hover {
+    background: #1877f2;        /* Azul Facebook */
+    color: var(--color-white);
+}
+
+/* Container do banner/logo */
+#banner {
+    max-width: 500px;           /* Largura máxima */
+    z-index: 1;                 /* Acima da forma */
+    animation: float 3s ease-in-out infinite; /* Animação de flutuar */
+}
+
+/* Imagem do banner */
+#banner img {
+    width: 100%;                /* Largura total */
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.15)); /* Sombra na imagem */
+}
+
+/* 
+    =====================================================
+    5. SEÇÃO SERVIÇOS
+    =====================================================
+    Grid de cards com os serviços oferecidos
+*/
+
+/* Container da seção serviços */
+#servicos {
+    padding: 80px 5%;           /* Espaçamento interno */
+    background: var(--color-white); /* Fundo branco */
+}
+
+/* Título das seções (reutilizável) */
+.section-title {
+    font-family: var(--font-primary); /* Fonte divertida */
+    font-size: 2.5rem;          /* Tamanho grande */
+    font-weight: 700;           /* Negrito */
+    color: var(--color-primary); /* Verde */
+    text-align: center;         /* Centralizado */
+    margin-bottom: 10px;        /* Margem pequena */
+}
+
+/* Subtítulo das seções */
+.section-subtitle {
+    font-size: 1.1rem;          /* Tamanho médio */
+    color: var(--color-gray);   /* Cinza */
+    text-align: center;         /* Centralizado */
+    margin-bottom: 50px;        /* Margem maior */
+    font-weight: 400;           /* Peso normal */
+}
+
+/* Grid de cards de serviços */
+#services-grid {
+    display: grid;              /* Layout grid */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Colunas responsivas */
+    gap: 30px;                  /* Espaço entre cards */
+    max-width: 1200px;          /* Largura máxima */
+    margin: 0 auto;             /* Centraliza */
+}
+
+/* Card individual de serviço */
+.service-card {
+    background: var(--color-white); /* Fundo branco */
+    padding: 30px;              /* Espaçamento interno */
+    border-radius: var(--radius-lg); /* Bordas arredondadas */
+    box-shadow: var(--shadow-md); /* Sombra */
+    transition: var(--transition); /* Transição suave */
+    border: 2px solid transparent; /* Borda invisível (para hover) */
+}
+
+/* Hover no card */
+.service-card:hover {
+    transform: translateY(-10px); /* Sobe */
+    box-shadow: var(--shadow-lg); /* Sombra maior */
+    border-color: var(--color-secondary); /* Borda amarela */
+}
+
+/* Ícone do serviço */
+.service-icon {
+    width: 70px;                /* Largura fixa */
+    height: 70px;               /* Altura fixa */
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
+    border-radius: var(--radius-md); /* Bordas arredondadas */
+    display: flex;              /* Flexbox */
+    align-items: center;        /* Centraliza */
+    justify-content: center;    /* Centraliza */
+    margin-bottom: 20px;        /* Margem inferior */
+}
+
+/* Ícone dentro do container */
+.service-icon i {
+    font-size: 2rem;            /* Tamanho grande */
+    color: var(--color-white);  /* Branco */
+}
+
+/* Título do serviço */
+.service-title {
+    font-family: var(--font-primary); /* Fonte divertida */
+    font-size: 1.4rem;          /* Tamanho médio-grande */
+    color: var(--color-dark);   /* Escuro */
+    margin-bottom: 15px;        /* Margem inferior */
+}
+
+/* Descrição do serviço */
+.service-description {
+    font-size: 0.95rem;         /* Tamanho do texto */
+    color: var(--color-gray);   /* Cinza */
+    margin-bottom: 20px;        /* Margem inferior */
+    line-height: 1.7;           /* Boa legibilidade */
+}
+
+/* Lista de features do serviço */
+.service-features {
+    display: flex;              /* Flexbox */
+    flex-direction: column;     /* Empilha verticalmente */
+    gap: 10px;                  /* Espaço entre itens */
+}
+
+/* Item da lista de features */
+.service-features li {
+    display: flex;              /* Flexbox */
+    align-items: center;        /* Centraliza */
+    gap: 10px;                  /* Espaço entre ícone e texto */
+    font-size: 0.9rem;          /* Tamanho do texto */
+    color: var(--color-dark);   /* Cor escura */
+}
+
+/* Ícone de check */
+.service-features i {
+    color: var(--color-primary); /* Verde */
+    font-size: 0.9rem;          /* Tamanho do ícone */
+}
+
+/* 
+    =====================================================
+    6. SEÇÃO SOBRE
+    =====================================================
+    Informações sobre a empresa com imagem e cards
+*/
+
+/* Container da seção sobre */
+#sobre {
+    padding: 80px 5%;           /* Espaçamento interno */
+    background: var(--color-light); /* Fundo cinza claro */
+}
+
+/* Container da imagem */
+.about-image {
+    max-width: 800px;           /* Largura máxima */
+    margin: 0 auto 50px;        /* Centraliza e margem inferior */
+    border-radius: var(--radius-lg); /* Bordas arredondadas */
+    overflow: hidden;           /* Esconde overflow */
+    box-shadow: var(--shadow-lg); /* Sombra grande */
+}
+
+/* Imagem do sobre */
+.about-image img {
+    width: 100%;                /* Largura total */
+    transition: var(--transition); /* Transição suave */
+}
+
+/* Zoom na imagem ao hover */
+.about-image:hover img {
+    transform: scale(1.03);     /* Aumenta levemente */
+}
+
+/* Container do conteúdo sobre */
+#about_content {
+    max-width: 1200px;          /* Largura máxima */
+    margin: 0 auto;             /* Centraliza */
+}
+
+/* Grid de cards sobre */
+.about-cards {
+    display: grid;              /* Layout grid */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Colunas responsivas */
+    gap: 30px;                  /* Espaço entre cards */
+    margin-top: 40px;           /* Margem superior */
+}
+
+/* Card individual sobre */
+.about-card {
+    background: var(--color-white); /* Fundo branco */
+    padding: 30px;              /* Espaçamento interno */
+    border-radius: var(--radius-lg); /* Bordas arredondadas */
+    box-shadow: var(--shadow-sm); /* Sombra sutil */
+    transition: var(--transition); /* Transição suave */
+}
+
+/* Hover no card sobre */
+.about-card:hover {
+    box-shadow: var(--shadow-md); /* Sombra maior */
+}
+
+/* Ícone do card sobre */
+.about-card-icon {
+    width: 60px;                /* Largura fixa */
+    height: 60px;               /* Altura fixa */
+    background: var(--color-secondary); /* Amarelo */
+    border-radius: var(--radius-full); /* Circular */
+    display: flex;              /* Flexbox */
+    align-items: center;        /* Centraliza */
+    justify-content: center;    /* Centraliza */
+    margin-bottom: 20px;        /* Margem inferior */
+}
+
+/* Ícone dentro do container */
+.about-card-icon i {
+    font-size: 1.5rem;          /* Tamanho grande */
+    color: var(--color-dark);   /* Escuro */
+}
+
+/* Título do card sobre */
+.about-card h4 {
+    font-family: var(--font-primary); /* Fonte divertida */
+    font-size: 1.3rem;          /* Tamanho médio */
+    color: var(--color-primary); /* Verde */
+    margin-bottom: 15px;        /* Margem inferior */
+}
+
+/* Parágrafos do card sobre */
+.about-card p {
+    font-size: 0.95rem;         /* Tamanho do texto */
+    color: var(--color-gray);   /* Cinza */
+    line-height: 1.7;           /* Boa legibilidade */
+    margin-bottom: 10px;        /* Margem entre parágrafos */
+}
+
+/* Lista de diferenciais */
+.about-list {
+    display: flex;              /* Flexbox */
+    flex-direction: column;     /* Empilha verticalmente */
+    gap: 12px;                  /* Espaço entre itens */
+}
+
+/* Item da lista */
+.about-list li {
+    display: flex;              /* Flexbox */
+    align-items: center;        /* Centraliza */
+    gap: 10px;                  /* Espaço entre ícone e texto */
+    font-size: 0.95rem;         /* Tamanho do texto */
+    color: var(--color-gray);   /* Cinza */
+}
+
+/* Ícone de pata na lista */
+.about-list i {
+    color: var(--color-secondary); /* Amarelo */
+}
+
+/* 
+    =====================================================
+    7. SEÇÃO CONTATO
+    =====================================================
+    Informações de contato, mapa e botões de ação
+*/
+
+/* Container da seção contato */
+#contato {
+    padding: 80px 5%;           /* Espaçamento interno */
+    background: var(--color-white); /* Fundo branco */
+}
+
+/* Container principal do contato */
+.contact-container {
+    display: grid;              /* Layout grid */
+    grid-template-columns: 1fr 1fr; /* Duas colunas iguais */
+    gap: 40px;                  /* Espaço entre colunas */
+    max-width: 1200px;          /* Largura máxima */
+    margin: 0 auto 50px;        /* Centraliza e margem inferior */
+}
+
+/* Grid de cards de contato */
+.contact-info {
+    display: grid;              /* Layout grid */
+    grid-template-columns: 1fr 1fr; /* Duas colunas */
+    gap: 20px;                  /* Espaço entre cards */
+}
+
+/* Card individual de contato */
+.contact-card {
+    display: flex;              /* Flexbox */
+    align-items: flex-start;    /* Alinha ao topo */
+    gap: 15px;                  /* Espaço entre ícone e texto */
+    padding: 20px;              /* Espaçamento interno */
+    background: var(--color-light); /* Fundo cinza claro */
+    border-radius: var(--radius-md); /* Bordas arredondadas */
+    transition: var(--transition); /* Transição suave */
+}
+
+/* Hover no card de contato */
+.contact-card:hover {
+    background: var(--color-white); /* Fundo branco */
+    box-shadow: var(--shadow-md); /* Adiciona sombra */
+}
+
+/* Ícone do contato */
+.contact-icon {
+    width: 50px;                /* Largura fixa */
+    height: 50px;               /* Altura fixa */
+    min-width: 50px;            /* Largura mínima (previne encolher) */
+    background: var(--color-primary); /* Verde */
+    border-radius: var(--radius-full); /* Circular */
+    display: flex;              /* Flexbox */
+    align-items: center;        /* Centraliza */
+    justify-content: center;    /* Centraliza */
+}
+
+/* Ícone dentro do container */
+.contact-icon i {
+    font-size: 1.2rem;          /* Tamanho do ícone */
+    color: var(--color-white);  /* Branco */
+}
+
+/* Detalhes do contato */
+.contact-details h4 {
+    font-family: var(--font-primary); /* Fonte divertida */
+    font-size: 1.1rem;          /* Tamanho do título */
+    color: var(--color-dark);   /* Escuro */
+    margin-bottom: 5px;         /* Margem pequena */
+}
+
+/* Parágrafos dos detalhes */
+.contact-details p {
+    font-size: 0.9rem;          /* Tamanho do texto */
+    color: var(--color-gray);   /* Cinza */
+    margin-bottom: 3px;         /* Margem mínima */
+}
+
+/* Link de contato */
+.contact-link {
+    display: inline-block;      /* Inline-block */
+    font-size: 0.85rem;         /* Tamanho pequeno */
+    color: var(--color-primary); /* Verde */
+    font-weight: 500;           /* Peso médio */
+    margin-top: 5px;            /* Margem superior */
+    transition: var(--transition); /* Transição suave */
+}
+
+/* Hover no link */
+.contact-link:hover {
+    color: var(--color-primary-light); /* Verde claro */
+    text-decoration: underline; /* Sublinhado */
+}
+
+/* Container do mapa */
+.contact-map {
+    border-radius: var(--radius-lg); /* Bordas arredondadas */
+    overflow: hidden;           /* Esconde overflow */
+    box-shadow: var(--shadow-md); /* Sombra */
+    min-height: 300px;          /* Altura mínima */
+}
+
+/* Botões de contato */
+.contact-buttons {
+    display: flex;              /* Flexbox */
+    justify-content: center;    /* Centraliza */
+    gap: 20px;                  /* Espaço entre botões */
+    flex-wrap: wrap;            /* Quebra em telas pequenas */
+}
+
+/* Estilo base dos botões de contato */
+.btn-contact {
+    display: inline-flex;       /* Flexbox inline */
+    align-items: center;        /* Centraliza */
+    gap: 10px;                  /* Espaço entre ícone e texto */
+    padding: 15px 30px;         /* Espaçamento interno */
+    font-size: 1rem;            /* Tamanho do texto */
+    font-weight: 600;           /* Semi-negrito */
+    color: var(--color-white);  /* Texto branco */
+    border-radius: var(--radius-md); /* Bordas arredondadas */
+    transition: var(--transition); /* Transição suave */
+}
+
+/* Hover nos botões de contato */
+.btn-contact:hover {
+    transform: translateY(-3px); /* Sobe */
+    box-shadow: var(--shadow-md); /* Sombra */
+}
+
+/* Botão WhatsApp grande */
+.btn-whatsapp-large {
+    background: #25d366;        /* Verde WhatsApp */
+}
+
+.btn-whatsapp-large:hover {
+    background: #128c7e;        /* Verde escuro */
+}
+
+/* Botão Instagram */
+.btn-instagram {
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+}
+
+.btn-instagram:hover {
+    opacity: 0.9;               /* Levemente transparente */
+}
+
+/* Botão Facebook */
+.btn-facebook {
+    background: #1877f2;        /* Azul Facebook */
+}
+
+.btn-facebook:hover {
+    background: #0d65d9;        /* Azul mais escuro */
+}
+
+/* 
+    =====================================================
+    8. FOOTER
+    =====================================================
+    Rodapé com informações, links e copyright
+*/
+
+/* Container do footer */
+footer {
+    background: var(--color-primary); /* Verde principal */
+    color: var(--color-white);  /* Texto branco */
+    position: relative;         /* Para a wave */
+}
+
+/* Wave decorativa no topo do footer */
+.footer-wave {
+    position: absolute;         /* Posição absoluta */
+    top: -1px;                  /* Alinha ao topo */
+    left: 0;
+    width: 100%;
+    overflow: hidden;           /* Esconde overflow */
+    line-height: 0;             /* Remove espaço extra */
+    transform: rotate(180deg);  /* Inverte a wave */
+}
+
+/* SVG da wave */
+.footer-wave svg {
+    display: block;             /* Bloco */
+    width: 100%;                /* Largura total */
+    height: 80px;               /* Altura fixa */
+}
+
+/* Container dos itens do footer */
+#footer_items {
+    display: grid;              /* Layout grid */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Colunas responsivas */
+    gap: 40px;                  /* Espaço entre colunas */
+    padding: 100px 5% 40px;     /* Padding (topo maior por causa da wave) */
+    max-width: 1200px;          /* Largura máxima */
+    margin: 0 auto;             /* Centraliza */
+}
+
+/* Título dos blocos do footer */
+#footer_items h4 {
+    font-family: var(--font-primary); /* Fonte divertida */
+    font-size: 1.2rem;          /* Tamanho médio */
+    margin-bottom: 20px;        /* Margem inferior */
+    display: flex;              /* Flexbox */
+    align-items: center;        /* Centraliza */
+    gap: 10px;                  /* Espaço entre ícone e texto */
+}
+
+/* Parágrafos do footer */
+#footer_items p {
+    font-size: 0.9rem;          /* Tamanho do texto */
+    margin-bottom: 8px;         /* Margem entre linhas */
+    opacity: 0.9;               /* Levemente transparente */
+}
+
+/* Links do footer */
+.footer-links ul {
+    display: flex;              /* Flexbox */
+    flex-direction: column;     /* Empilha verticalmente */
+    gap: 10px;                  /* Espaço entre links */
+}
+
+/* Link individual */
+.footer-links a {
+    font-size: 0.9rem;          /* Tamanho do texto */
+    opacity: 0.9;               /* Levemente transparente */
+    transition: var(--transition); /* Transição suave */
+}
+
+/* Hover nos links */
+.footer-links a:hover {
+    opacity: 1;                 /* Totalmente visível */
+    padding-left: 5px;          /* Move para direita */
+}
+
+/* Redes sociais no footer */
+.footer-social .social-media-buttons {
+    margin-top: 10px;           /* Margem superior */
+}
+
+/* Ícones sociais no footer */
+.footer-social .social-media-buttons a {
+    background: rgba(255, 255, 255, 0.1); /* Fundo semi-transparente */
+    color: var(--color-white);  /* Ícone branco */
+}
+
+/* Copyright */
+.footer-copyright {
+    text-align: center;         /* Centralizado */
+    padding: 20px 5%;           /* Padding */
+    border-top: 1px solid rgba(255, 255, 255, 0.1); /* Linha sutil */
+    font-size: 0.85rem;         /* Tamanho pequeno */
+    opacity: 0.8;               /* Levemente transparente */
+}
+
+/* 
+    =====================================================
+    9. COMPONENTES REUTILIZÁVEIS
+    =====================================================
+    Botão flutuante do WhatsApp e outros componentes
+*/
+
+/* Botão flutuante do WhatsApp */
+.whatsapp-float {
+    position: fixed;            /* Posição fixa na tela */
+    bottom: 30px;               /* Distância do fundo */
+    right: 30px;                /* Distância da direita */
+    width: 60px;                /* Largura fixa */
+    height: 60px;               /* Altura fixa */
+    background: #25d366;        /* Verde WhatsApp */
+    border-radius: var(--radius-full); /* Circular */
+    display: flex;              /* Flexbox */
+    align-items: center;        /* Centraliza */
+    justify-content: center;    /* Centraliza */
+    font-size: 2rem;            /* Tamanho grande do ícone */
+    color: var(--color-white);  /* Ícone branco */
+    box-shadow: var(--shadow-lg); /* Sombra grande */
+    z-index: 999;               /* Acima de outros elementos */
+    transition: var(--transition); /* Transição suave */
+    animation: pulse 2s infinite; /* Animação de pulso */
+}
+
+/* Hover no botão flutuante */
+.whatsapp-float:hover {
+    background: #128c7e;        /* Verde mais escuro */
+    transform: scale(1.1);      /* Aumenta */
+}
+
+/* 
+    =====================================================
+    10. ANIMAÇÕES
+    =====================================================
+    Keyframes para animações CSS
+*/
+
+/* Animação de flutuar (para o banner) */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0); /* Posição inicial/final */
+    }
+    50% {
+        transform: translateY(-15px); /* Sobe */
+    }
+}
+
+/* Animação de pulso (para o botão WhatsApp) */
+@keyframes pulse {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); /* Sombra inicial */
+    }
+    50% {
+        box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); /* Sombra expande */
+    }
+}
+
+/* Animação de fade in de baixo para cima */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;             /* Invisível */
+        transform: translateY(30px); /* Abaixo da posição final */
+    }
+    to {
+        opacity: 1;             /* Visível */
+        transform: translateY(0); /* Posição final */
+    }
+}
+
+/* 
+    =====================================================
+    11. MEDIA QUERIES (RESPONSIVIDADE)
+    =====================================================
+    Ajustes de layout para diferentes tamanhos de tela
+*/
+
+/* Tablets e telas médias (max-width: 992px) */
+@media screen and (max-width: 992px) {
+    /* Seção home em coluna */
+    #home {
+        flex-direction: column;     /* Empilha elementos */
+        text-align: center;         /* Centraliza texto */
+        padding-top: 100px;         /* Ajusta padding */
+    }
+    
+    /* CTA centralizado */
+    #cta {
+        max-width: 100%;            /* Largura total */
+        margin-bottom: 40px;        /* Margem inferior */
+    }
+    
+    /* Botões centralizados */
+    #cta_buttons {
+        justify-content: center;    /* Centraliza */
+    }
+    
+    /* Redes sociais centralizadas */
+    .social-media-buttons {
+        justify-content: center;    /* Centraliza */
+    }
+    
+    /* Banner menor */
+    #banner {
+        max-width: 350px;           /* Largura reduzida */
+    }
+    
+    /* Container de contato em coluna */
+    .contact-container {
+        grid-template-columns: 1fr; /* Uma coluna */
+    }
+    
+    /* Info de contato em duas colunas */
+    .contact-info {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    /* Mapa com altura fixa */
+    .contact-map {
+        min-height: 350px;          /* Altura mínima maior */
+    }
+}
+
+/* Celulares e telas pequenas (max-width: 768px) */
+@media screen and (max-width: 768px) {
+    /* Esconde navegação desktop */
+    #nav_list {
+        display: none;              /* Esconde lista */
+    }
+    
+    /* Esconde botão WhatsApp do header */
+    #navbar .btn-whatsapp {
+        display: none;              /* Esconde botão */
+    }
+    
+    /* Mostra botão mobile */
+    #mobile_btn {
+        display: block;             /* Mostra botão hambúrguer */
+    }
+    
+    /* Título menor */
+    .title {
+        font-size: 2.2rem;          /* Tamanho reduzido */
+    }
+    
+    /* Título de seção menor */
+    .section-title {
+        font-size: 2rem;            /* Tamanho reduzido */
+    }
+    
+    /* Info de contato em uma coluna */
+    .contact-info {
+        grid-template-columns: 1fr; /* Uma coluna */
+    }
+    
+    /* Footer em uma coluna */
+    #footer_items {
+        text-align: center;         /* Centraliza texto */
+    }
+    
+    /* Redes sociais do footer centralizadas */
+    .footer-social .social-media-buttons {
+        justify-content: center;    /* Centraliza */
+    }
+}
+
+/* Celulares pequenos (max-width: 480px) */
+@media screen and (max-width: 480px) {
+    /* Padding reduzido */
+    #home,
+    #servicos,
+    #sobre,
+    #contato {
+        padding: 60px 4%;           /* Padding menor */
+    }
+    
+    /* Título ainda menor */
+    .title {
+        font-size: 1.8rem;          /* Tamanho menor */
+    }
+    
+    /* Título de seção menor */
+    .section-title {
+        font-size: 1.6rem;          /* Tamanho menor */
+    }
+    
+    /* Botões de contato menores */
+    .btn-contact {
+        padding: 12px 20px;         /* Padding reduzido */
+        font-size: 0.9rem;          /* Texto menor */
+    }
+    
+    /* Botão flutuante menor */
+    .whatsapp-float {
+        width: 50px;                /* Largura reduzida */
+        height: 50px;               /* Altura reduzida */
+        font-size: 1.5rem;          /* Ícone menor */
+        bottom: 20px;               /* Mais próximo do fundo */
+        right: 20px;                /* Mais próximo da borda */
+    }
+}

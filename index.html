@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<!-- 
+    =====================================================
+    PET SHOP LIZ - Landing Page
+    =====================================================
+    Arquivo: index.html
+    Descrição: Página principal da landing page do Pet Shop Liz
+    Autor: Desenvolvedor Web
+    Data: Janeiro 2026
+    
+    Este arquivo contém a estrutura HTML da landing page
+    do Pet Shop Liz, incluindo:
+    - Header com navegação
+    - Seção Hero com banner principal
+    - Seção de Serviços
+    - Seção Sobre Nós
+    - Seção de Contato
+    - Footer com redes sociais
+    =====================================================
+-->
+<html lang="pt-br">
+<head>
+    <!-- Define o conjunto de caracteres como UTF-8 para suportar caracteres especiais -->
+    <meta charset="UTF-8">
+    
+    <!-- Configura a viewport para responsividade em dispositivos móveis -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Meta tags para SEO -->
+    <meta name="description" content="Pet Shop Liz - Jaraguá | Banho e Tosa | Creche e Hotel para cães em São Paulo. Serviços de qualidade para seu pet!">
+    <meta name="keywords" content="pet shop, banho e tosa, creche para cães, hotel para cães, Jaraguá, São Paulo">
+    <meta name="author" content="Pet Shop Liz">
+    
+    <!-- Importa a biblioteca de ícones Font Awesome via CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- Importa as fontes do Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Link para o arquivo CSS externo -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Importa jQuery via CDN para manipulação do DOM -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <!-- Importa ScrollReveal para animações de scroll -->
+    <script src="https://unpkg.com/scrollreveal"></script>
+    
+    <!-- Título da página que aparece na aba do navegador -->
+    <title>Pet Shop Liz | Jaraguá - Banho e Tosa | Creche e Hotel para Cães</title>
+</head>
+<body>
+    <!-- 
+        =====================================================
+        HEADER - Cabeçalho com navegação principal
+        =====================================================
+        Contém o logo da empresa e menu de navegação
+        com links para as seções da página
+    -->
+    <header>
+        <!-- Barra de navegação principal -->
+        <nav id="navbar">
+            <!-- Logo da empresa com ícone de pata -->
+            <a href="#home" class="nav-logo">
+                <i class="fa-solid fa-paw" id="nav_logo"></i>
+                <span>Pet Shop Liz</span>
+            </a>
+
+            <!-- Lista de navegação para desktop -->
+            <ul id="nav_list">
+                <!-- Item de navegação - Início (ativo por padrão) -->
+                <li class="nav-item active">
+                    <a href="#home">Início</a>
+                </li>
+                <!-- Item de navegação - Serviços -->
+                <li class="nav-item">
+                    <a href="#servicos">Serviços</a>
+                </li>
+                <!-- Item de navegação - Sobre -->
+                <li class="nav-item">
+                    <a href="#sobre">Sobre</a>
+                </li>
+                <!-- Item de navegação - Contato -->
+                <li class="nav-item">
+                    <a href="#contato">Contato</a>
+                </li>
+            </ul>
+
+            <!-- Botão de WhatsApp no header -->
+            <a href="https://wa.me/5511962685711" target="_blank" class="btn-default btn-whatsapp">
+                <i class="fa-brands fa-whatsapp"></i>
+                Fale Conosco
+            </a>
+
+            <!-- Botão do menu mobile (hambúrguer) -->
+            <button id="mobile_btn" aria-label="Abrir menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </nav>
+
+        <!-- Menu mobile (aparece apenas em telas pequenas) -->
+        <div id="mobile_menu">
+            <!-- Lista de navegação mobile -->
+            <ul id="mobile_nav_list">
+                <li class="nav-item">
+                    <a href="#home">Início</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#servicos">Serviços</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#sobre">Sobre</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contato">Contato</a>
+                </li>
+            </ul>
+
+            <!-- Botão WhatsApp no menu mobile -->
+            <a href="https://wa.me/5511962685711" target="_blank" class="btn-default btn-whatsapp">
+                <i class="fa-brands fa-whatsapp"></i>
+                Fale Conosco
+            </a>
+        </div>
+    </header>
+
+    <!-- 
+        =====================================================
+        MAIN - Conteúdo principal da página
+        =====================================================
+        Contém todas as seções da landing page
+    -->
+    <main id="content">
+        <!-- 
+            =====================================================
+            SEÇÃO HOME - Banner principal / Hero Section
+            =====================================================
+            Primeira seção visível com mensagem de boas-vindas,
+            logo e botões de ação
+        -->
+        <section id="home">
+            <!-- Elemento decorativo de fundo -->
+            <div class="shape"></div>
+            
+            <!-- CTA - Call to Action com texto principal -->
+            <div id="cta">
+                <!-- Título principal da landing page -->
+                <h1 class="title">
+                    Cuidamos do seu <span>Pet</span> com muito amor!
+                </h1>
+
+                <!-- Descrição/subtítulo -->
+                <p class="description">
+                    Pet Shop Liz - Jaraguá | Banho e Tosa | Creche e Hotel para cães. 
+                    Oferecemos os melhores serviços para deixar seu pet feliz e saudável!
+                </p>
+
+                <!-- Container dos botões de ação -->
+                <div id="cta_buttons">
+                    <!-- Botão para ver serviços -->
+                    <a href="#servicos" class="btn-default">
+                        <i class="fa-solid fa-paw"></i>
+                        Ver Serviços
+                    </a>
+
+                    <!-- Botão de telefone com número -->
+                    <a href="tel:+5511962685711" id="phone_button">
+                        <button class="btn-default">
+                            <i class="fa-solid fa-phone"></i>
+                        </button>
+                        (11) 96268-5711
+                    </a>
+                </div>
+
+                <!-- Botões de redes sociais -->
+                <div class="social-media-buttons">
+                    <!-- Link para WhatsApp -->
+                    <a href="https://wa.me/5511962685711" target="_blank" aria-label="WhatsApp">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </a>
+
+                    <!-- Link para Instagram -->
+                    <a href="https://www.instagram.com/petliz.jaragua/?hl=pt" target="_blank" aria-label="Instagram">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+
+                    <!-- Link para Facebook -->
+                    <a href="https://www.facebook.com/petshopliz.jaraguaa/" target="_blank" aria-label="Facebook">
+                        <i class="fa-brands fa-facebook"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Banner com imagem/logo principal -->
+            <div id="banner">
+                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT%20Image%2022%20de%20jan.%20de%202026%2C%2014_01_28-KwYjwY37wNp2VofGuH1dbpCvAzzPf6.png" alt="Logo Pet Shop Liz com cachorro, gato e hamster">
+            </div>
+        </section>
+
+        <!-- 
+            =====================================================
+            SEÇÃO SERVIÇOS - Nossos Serviços
+            =====================================================
+            Apresenta os serviços oferecidos pelo pet shop:
+            Creche (Daycare), Hotel, Banho e Tosa, e Taxi Dog
+        -->
+        <section id="servicos">
+            <!-- Título da seção -->
+            <h2 class="section-title">Nossos Serviços</h2>
+            <!-- Subtítulo da seção -->
+            <h3 class="section-subtitle">Tudo para o bem-estar do seu pet</h3>
+
+            <!-- Container dos cards de serviços -->
+            <div id="services-grid">
+                <!-- Card do serviço de Creche (Daycare) -->
+                <div class="service-card">
+                    <!-- Ícone do serviço -->
+                    <div class="service-icon">
+                        <i class="fa-solid fa-house-chimney"></i>
+                    </div>
+                    <!-- Título do serviço -->
+                    <h3 class="service-title">Creche (Daycare)</h3>
+                    <!-- Descrição do serviço -->
+                    <p class="service-description">
+                        Deixe seu pet em um ambiente seguro e divertido enquanto você trabalha. 
+                        Atividades supervisionadas, socialização com outros pets e muito carinho durante todo o dia.
+                    </p>
+                    <!-- Lista de benefícios -->
+                    <ul class="service-features">
+                        <li><i class="fa-solid fa-check"></i> Ambiente climatizado</li>
+                        <li><i class="fa-solid fa-check"></i> Supervisão constante</li>
+                        <li><i class="fa-solid fa-check"></i> Atividades recreativas</li>
+                    </ul>
+                </div>
+
+                <!-- Card do serviço de Hotel -->
+                <div class="service-card">
+                    <!-- Ícone do serviço -->
+                    <div class="service-icon">
+                        <i class="fa-solid fa-bed"></i>
+                    </div>
+                    <!-- Título do serviço -->
+                    <h3 class="service-title">Hotel para Cães</h3>
+                    <!-- Descrição do serviço -->
+                    <p class="service-description">
+                        Viaje tranquilo sabendo que seu pet está em boas mãos. 
+                        Oferecemos hospedagem com todo conforto, alimentação de qualidade e acompanhamento 24 horas.
+                    </p>
+                    <!-- Lista de benefícios -->
+                    <ul class="service-features">
+                        <li><i class="fa-solid fa-check"></i> Hospedagem diária</li>
+                        <li><i class="fa-solid fa-check"></i> Alimentação inclusa</li>
+                        <li><i class="fa-solid fa-check"></i> Monitoramento 24h</li>
+                    </ul>
+                </div>
+
+                <!-- Card do serviço de Banho e Tosa -->
+                <div class="service-card">
+                    <!-- Ícone do serviço -->
+                    <div class="service-icon">
+                        <i class="fa-solid fa-shower"></i>
+                    </div>
+                    <!-- Título do serviço -->
+                    <h3 class="service-title">Banho e Tosa</h3>
+                    <!-- Descrição do serviço -->
+                    <p class="service-description">
+                        Seu pet merece ficar lindo e cheiroso! Contamos com profissionais experientes 
+                        e produtos de alta qualidade para deixar seu amigo com a melhor aparência.
+                    </p>
+                    <!-- Lista de benefícios -->
+                    <ul class="service-features">
+                        <li><i class="fa-solid fa-check"></i> Produtos premium</li>
+                        <li><i class="fa-solid fa-check"></i> Profissionais qualificados</li>
+                        <li><i class="fa-solid fa-check"></i> Hidratação e perfume</li>
+                    </ul>
+                </div>
+
+                <!-- Card do serviço de Taxi Dog -->
+                <div class="service-card">
+                    <!-- Ícone do serviço -->
+                    <div class="service-icon">
+                        <i class="fa-solid fa-car"></i>
+                    </div>
+                    <!-- Título do serviço -->
+                    <h3 class="service-title">Taxi Dog</h3>
+                    <!-- Descrição do serviço -->
+                    <p class="service-description">
+                        Sem tempo para trazer seu pet? Nosso serviço de Taxi Dog busca e leva seu 
+                        amiguinho com segurança e conforto, direto na porta da sua casa.
+                    </p>
+                    <!-- Lista de benefícios -->
+                    <ul class="service-features">
+                        <li><i class="fa-solid fa-check"></i> Busca e entrega</li>
+                        <li><i class="fa-solid fa-check"></i> Veículo adaptado</li>
+                        <li><i class="fa-solid fa-check"></i> Motorista treinado</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 
+            =====================================================
+            SEÇÃO SOBRE - Sobre Nós
+            =====================================================
+            Informações sobre a história da empresa,
+            região de atendimento e referências
+        -->
+        <section id="sobre">
+            <!-- Container com imagem decorativa -->
+            <div class="about-image">
+                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT%20Image%2022%20de%20jan.%20de%202026%2C%2013_53_23-Xea5aFSJRj1R8gMQeuUKpehmOU4dah.png" alt="Banner Pet Shop Liz - Tudo para o seu Pet">
+            </div>
+
+            <!-- Container com conteúdo textual -->
+            <div id="about_content">
+                <!-- Título da seção -->
+                <h2 class="section-title">Sobre Nós</h2>
+                <!-- Subtítulo da seção -->
+                <h3 class="section-subtitle">Conheça nossa história</h3>
+
+                <!-- Cards com informações sobre a empresa -->
+                <div class="about-cards">
+                    <!-- Card da História -->
+                    <div class="about-card">
+                        <div class="about-card-icon">
+                            <i class="fa-solid fa-heart"></i>
+                        </div>
+                        <h4>Nossa História</h4>
+                        <p>
+                            A Pet Shop Liz nasceu em 2015 do sonho de Elizabete Santos, uma apaixonada por animais 
+                            que transformou sua garagem em um pequeno espaço de cuidados para pets do bairro. 
+                            O que começou como um serviço de banho e tosa para vizinhos, rapidamente cresceu pela 
+                            qualidade do atendimento e o carinho dedicado a cada animal.
+                        </p>
+                        <p>
+                            Hoje, após 10 anos de dedicação, nos tornamos referência em cuidados pet na região do 
+                            Jaraguá e bairros vizinhos, sempre mantendo o mesmo amor e atenção que nos trouxe até aqui.
+                        </p>
+                    </div>
+
+                    <!-- Card da Região -->
+                    <div class="about-card">
+                        <div class="about-card-icon">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+                        <h4>Nossa Região</h4>
+                        <p>
+                            Estamos localizados no coração do bairro São João, na zona norte de São Paulo, 
+                            atendendo toda a região do Jaraguá e bairros próximos como Pirituba, Taipas, 
+                            Brasilândia, Perus e Freguesia do Ó.
+                        </p>
+                        <p>
+                            <strong>Ponto de Referência:</strong> Próximo à Estação Jaraguá da CPTM e ao 
+                            Parque Estadual do Jaraguá, em uma rua tranquila e de fácil acesso.
+                        </p>
+                    </div>
+
+                    <!-- Card dos Diferenciais -->
+                    <div class="about-card">
+                        <div class="about-card-icon">
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <h4>Nossos Diferenciais</h4>
+                        <ul class="about-list">
+                            <li><i class="fa-solid fa-paw"></i> Atendimento personalizado para cada pet</li>
+                            <li><i class="fa-solid fa-paw"></i> Equipe treinada e apaixonada por animais</li>
+                            <li><i class="fa-solid fa-paw"></i> Ambiente seguro e higienizado</li>
+                            <li><i class="fa-solid fa-paw"></i> Taxi Dog incluso em alguns serviços</li>
+                            <li><i class="fa-solid fa-paw"></i> Preços justos e transparentes</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 
+            =====================================================
+            SEÇÃO CONTATO - Entre em Contato
+            =====================================================
+            Informações de contato: endereço, telefone,
+            email, WhatsApp e redes sociais
+        -->
+        <section id="contato">
+            <!-- Título da seção -->
+            <h2 class="section-title">Entre em Contato</h2>
+            <!-- Subtítulo da seção -->
+            <h3 class="section-subtitle">Estamos prontos para atender você e seu pet</h3>
+
+            <!-- Container principal do contato -->
+            <div class="contact-container">
+                <!-- Cards de informações de contato -->
+                <div class="contact-info">
+                    <!-- Card de Endereço -->
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Endereço</h4>
+                            <p>R. Alto Jurupari, 224</p>
+                            <p>São João, São Paulo - SP</p>
+                            <p>CEP: 02995-040</p>
+                        </div>
+                    </div>
+
+                    <!-- Card de Telefone/WhatsApp -->
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>WhatsApp</h4>
+                            <p>(11) 96268-5711</p>
+                            <a href="https://wa.me/5511962685711" target="_blank" class="contact-link">
+                                Clique para conversar
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Card de Email -->
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fa-solid fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>E-mail</h4>
+                            <p>contato@petshopliz.com.br</p>
+                            <a href="mailto:contato@petshopliz.com.br" class="contact-link">
+                                Enviar e-mail
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Card de Instagram -->
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fa-brands fa-instagram"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Instagram</h4>
+                            <p>@petshopliz</p>
+                            <a href="https://instagram.com/petshopliz" target="_blank" class="contact-link">
+                                Seguir no Instagram
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- https://www.google.com/maps/embed?pb=!4v1769105896290!6m8!1m7!1sYFtYUfsN9PKAok0y_ixbhQ!2m2!1d-23.44955665223596!2d-46.73693576622643!3f358.76!4f0!5f0.7820865974627469-->
+                <!-- Mapa do Google Maps (iframe) -->
+                <div class="contact-map">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3658.5!2d-46.75!3d-23.45!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDI3JzAwLjAiUyA0NsKwNDUnMDAuMCJX!5e0!3m2!1spt-BR!2sbr!4v1"
+                        width="100%" 
+                        height="100%" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade"
+                        title="Localização Pet Shop Liz">
+                    </iframe>
+                </div>
+            </div>
+
+            <!-- Botões de ação para contato rápido -->
+            <div class="contact-buttons">
+                <!-- Botão WhatsApp -->
+                <a href="https://wa.me/5511962685711" target="_blank" class="btn-contact btn-whatsapp-large">
+                    <i class="fa-brands fa-whatsapp"></i>
+                    Falar no WhatsApp
+                </a>
+                <!-- Botão Instagram -->
+                <a href="https://www.instagram.com/petliz.jaragua/?hl=pt" target="_blank" class="btn-contact btn-instagram">
+                    <i class="fa-brands fa-instagram"></i>
+                    Instagram
+                </a>
+                <!-- Botão Facebook -->
+                <a href="https://www.facebook.com/petshopliz.jaraguaa/" target="_blank" class="btn-contact btn-facebook">
+                    <i class="fa-brands fa-facebook"></i>
+                    Facebook
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- 
+        =====================================================
+        FOOTER - Rodapé da página
+        =====================================================
+        Contém informações de copyright e links para redes sociais
+    -->
+    <footer>
+        <!-- Imagem decorativa de onda no topo do footer -->
+        <div class="footer-wave">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none">
+                <path fill="#1a5f2a" fill-opacity="1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,154.7C960,171,1056,181,1152,165.3C1248,149,1344,107,1392,85.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+            </svg>
+        </div>
+
+        <!-- Container dos itens do footer -->
+        <div id="footer_items">
+            <!-- Informações da empresa -->
+            <div class="footer-info">
+                <h4><i class="fa-solid fa-paw"></i> Pet Shop Liz</h4>
+                <p>Cuidando do seu pet com amor desde 2015</p>
+                <p>R. Alto Jurupari, 224 - São João</p>
+                <p>São Paulo - SP, 02995-040</p>
+            </div>
+
+            <!-- Horário de funcionamento -->
+            <div class="footer-hours">
+                <h4><i class="fa-solid fa-clock"></i> Horário de Funcionamento</h4>
+                <p>Segunda a Sexta: 8h às 19h</p>
+                <p>Sábados: 8h às 17h</p>
+                <p>Domingos e Feriados: Fechado</p>
+            </div>
+
+            <!-- Links rápidos -->
+            <div class="footer-links">
+                <h4><i class="fa-solid fa-link"></i> Links Rápidos</h4>
+                <ul>
+                    <li><a href="#home">Início</a></li>
+                    <li><a href="#servicos">Serviços</a></li>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </div>
+
+            <!-- Redes sociais -->
+            <div class="footer-social">
+                <h4><i class="fa-solid fa-share-nodes"></i> Redes Sociais</h4>
+                <div class="social-media-buttons">
+                    <a href="https://wa.me/5511962685711" target="_blank" aria-label="WhatsApp">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </a>
+                    <a href="https://www.instagram.com/petliz.jaragua/?hl=pt" target="_blank" aria-label="Instagram">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="https://www.facebook.com/petshopliz.jaraguaa/" target="_blank" aria-label="Facebook">
+                        <i class="fa-brands fa-facebook"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="footer-copyright">
+            <span>&copy; 2026 Pet Shop Liz - Todos os direitos reservados</span>
+        </div>
+    </footer>
+
+    <!-- Botão flutuante do WhatsApp -->
+    <a href="https://wa.me/5511962685711" target="_blank" class="whatsapp-float" aria-label="Fale conosco pelo WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- Link para o arquivo JavaScript externo -->
+    <script src="script.js"></script>
+</body>
+</html>
