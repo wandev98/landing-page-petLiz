@@ -132,14 +132,15 @@ export default function PetShopLiz() {
           box-shadow: var(--shadow-sm);
         }
 
-        #navbar {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          padding: 15px 5%;
-          max-width: 1400px;
-          margin: 0 auto;
-        }
+#navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 5%;
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  }
 
         .nav-logo {
           display: flex;
@@ -232,42 +233,83 @@ export default function PetShopLiz() {
           background: #128c7e;
         }
 
-        #mobile_btn {
-          display: none;
-          background: transparent;
-          border: none;
-          font-size: 1.5rem;
-          color: var(--color-primary);
-          cursor: pointer;
+#mobile_btn {
+        display: none;
+        background: transparent;
+        border: none;
+        font-size: 1.8rem;
+        color: var(--color-primary);
+        cursor: pointer;
+        padding: 8px;
+        z-index: 1001;
+        transition: var(--transition);
         }
 
-        #mobile_menu {
-          display: none;
-          position: absolute;
-          top: 100%;
-          left: 0;
-          width: 100%;
-          background: var(--color-white);
-          padding: 20px;
-          box-shadow: var(--shadow-md);
-          flex-direction: column;
-          gap: 20px;
+        #mobile_btn:hover {
+        color: var(--color-secondary);
+        transform: scale(1.1);
+        }
+
+#mobile_menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: -5%;
+  right: -5%;
+  width: calc(100% + 10%);
+  background: var(--color-white);
+  padding: 20px 5%;
+  box-shadow: var(--shadow-lg);
+  flex-direction: column;
+  gap: 20px;
+  z-index: 999;
+  animation: slideDown 0.3s ease;
+  border-top: 2px solid var(--color-primary);
+  }
+
+        @keyframes slideDown {
+        from {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
         }
 
         #mobile_menu.active {
-          display: flex;
+        display: flex;
         }
 
         #mobile_nav_list {
           display: flex;
           flex-direction: column;
-          gap: 15px;
+          gap: 5px;
+          width: 100%;
         }
 
         #mobile_nav_list .nav-item a {
           display: block;
-          padding: 12px 16px;
+          padding: 15px 20px;
           font-size: 1.1rem;
+          font-weight: 500;
+          color: var(--color-dark);
+          border-radius: var(--radius-sm);
+          transition: var(--transition);
+          cursor: pointer;
+        }
+
+        #mobile_nav_list .nav-item a:hover {
+          background: var(--color-light);
+          color: var(--color-primary);
+          padding-left: 25px;
+        }
+
+        #mobile_menu .btn-whatsapp {
+          margin-top: 10px;
+          text-align: center;
+          justify-content: center;
         }
 
         /* Home Section */
@@ -857,26 +899,49 @@ export default function PetShopLiz() {
           }
         }
 
-        @media (max-width: 768px) {
-          #nav_list {
-            display: none;
-          }
+@media (max-width: 768px) {
+        #nav_list {
+        display: none;
+        }
 
-          #navbar .btn-whatsapp {
-            display: none;
-          }
+        #navbar .btn-whatsapp {
+        display: none;
+        }
 
-          #mobile_btn {
-            display: block;
-          }
+        #mobile_btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 44px;
+        height: 44px;
+        }
 
-          .title {
-            font-size: 2.2rem;
-          }
+        .nav-logo {
+        font-size: 1.2rem;
+        }
 
-          .section-title {
-            font-size: 2rem;
-          }
+        #nav_logo {
+        font-size: 1.4rem;
+        }
+
+        .title {
+        font-size: 2.2rem;
+        }
+
+        .section-title {
+        font-size: 2rem;
+        }
+
+        #home {
+        flex-direction: column;
+        text-align: center;
+        padding-top: 100px;
+        }
+
+        #banner {
+        max-width: 280px;
+        margin: 30px auto 0;
+        }
         }
 
         @media (max-width: 480px) {
@@ -938,28 +1003,29 @@ export default function PetShopLiz() {
           <button id="mobile_btn" aria-label="Abrir menu" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
             <i className={`fa-solid ${mobileMenuOpen ? "fa-times" : "fa-bars"}`}></i>
           </button>
-        </nav>
 
-        <div id="mobile_menu" className={mobileMenuOpen ? "active" : ""}>
-          <ul id="mobile_nav_list">
-            <li className="nav-item">
-              <a onClick={() => scrollToSection("home")}>Inicio</a>
-            </li>
-            <li className="nav-item">
-              <a onClick={() => scrollToSection("servicos")}>Servicos</a>
-            </li>
-            <li className="nav-item">
-              <a onClick={() => scrollToSection("sobre")}>Sobre</a>
-            </li>
-            <li className="nav-item">
-              <a onClick={() => scrollToSection("contato")}>Contato</a>
-            </li>
-          </ul>
-          <a href="https://wa.me/5511962685711" target="_blank" rel="noopener noreferrer" className="btn-default btn-whatsapp">
-            <i className="fa-brands fa-whatsapp"></i>
-            Fale Conosco
-          </a>
-        </div>
+          {/* Menu Mobile - Aparece ao clicar no botao hamburguer */}
+          <div id="mobile_menu" className={mobileMenuOpen ? "active" : ""}>
+            <ul id="mobile_nav_list">
+              <li className="nav-item">
+                <a onClick={() => scrollToSection("home")}>Inicio</a>
+              </li>
+              <li className="nav-item">
+                <a onClick={() => scrollToSection("servicos")}>Servicos</a>
+              </li>
+              <li className="nav-item">
+                <a onClick={() => scrollToSection("sobre")}>Sobre</a>
+              </li>
+              <li className="nav-item">
+                <a onClick={() => scrollToSection("contato")}>Contato</a>
+              </li>
+            </ul>
+            <a href="https://wa.me/5511962685711" target="_blank" rel="noopener noreferrer" className="btn-default btn-whatsapp">
+              <i className="fa-brands fa-whatsapp"></i>
+              Fale Conosco
+            </a>
+          </div>
+        </nav>
       </header>
 
       {/* MAIN CONTENT */}
